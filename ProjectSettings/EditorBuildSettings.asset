@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Title.unity
+    path: Assets/_Scenes/MainMenu.unity
     guid: 8c0c5fa584a854be6b95af007c13ec01
   - enabled: 1
-    path: Assets/Scenes/FlerpyBerd.unity
+    path: Assets/_Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/_Scenes/PersistentLevel.unity
+    guid: b84ccf647fa614256aa47f319bb4d271
   m_configObjects: {}

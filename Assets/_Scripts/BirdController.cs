@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class BirdController : MonoBehaviour
 {
-    [SerializeField]
-    private TMPro.TMP_Text flapCountText;
+    public GameManager gameManager;
 
-    public LogicManagerScript logic;
-    public BirdSoundController birdSoundController;
+    [SerializeField] private TMPro.TMP_Text flapCountText;
 
     public Rigidbody2D myRigidbody;
     public bool birdIsAlive = true;
@@ -20,10 +18,7 @@ public class BirdController : MonoBehaviour
 
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
-        birdSoundController = GameObject.FindGameObjectWithTag("BirdSounds").GetComponent<BirdSoundController>();
-
-        logic.togglePauseGame();
+        gameManager.togglePauseGame();
     }
 
     void Update()
@@ -31,7 +26,7 @@ public class BirdController : MonoBehaviour
         flapCountText.text = flapCount.ToString();
 
         // shield effect logic
-        if (logic.shieldIsActive)
+        if (gameManager.shieldIsActive)
         {
             transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
         }
@@ -41,14 +36,14 @@ public class BirdController : MonoBehaviour
         }
 
         // unpause game
-        if (Input.GetKeyDown(KeyCode.Space) == true && logic.isPaused)
+        if (Input.GetKeyDown(KeyCode.Space) == true && gameManager.isPaused)
         {
-            logic.togglePauseGame();
+            gameManager.togglePauseGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) == true && !logic.isPaused)
+        if (Input.GetKeyDown(KeyCode.Escape) == true && !gameManager.isPaused)
         {
-            logic.togglePauseGame();
+            gameManager.togglePauseGame();
         }
 
         // gameOver if player off screen
@@ -60,11 +55,11 @@ public class BirdController : MonoBehaviour
         // flap
         if (Input.GetKeyDown(KeyCode.Space) == true && birdIsAlive)
         {
-            if (birdSoundController.birdFlap.isPlaying)
+            if (GameInstance.Instance.birdFlap.isPlaying)
             {
                 flapCount += 1;
-                birdSoundController.birdFlap.pitch += .2f;
-                birdSoundController.birdFlap.Play();
+                GameInstance.Instance.birdFlap.pitch += .2f;
+                GameInstance.Instance.birdFlap.Play();
 
                 if (flapCount < 3)
                 {
@@ -72,7 +67,7 @@ public class BirdController : MonoBehaviour
                 }
                 else if (flapCount == 3)
                 {
-                    logic.increaseSquawkMeter();
+                    gameManager.increaseSquawkMeter();
                     flapCount += 1;
                 }
             }
@@ -80,9 +75,9 @@ public class BirdController : MonoBehaviour
             {
                 flapCount = 0;
                 float randomValue = Random.Range(lowestPitch, highestPitch);
-                birdSoundController.birdFlap.pitch = randomValue;
-                birdSoundController.birdFlap.Play();
-                //logic.resetSquawkMeter();
+                GameInstance.Instance.birdFlap.pitch = randomValue;
+                GameInstance.Instance.birdFlap.Play();
+                //gameManager.resetSquawkMeter();
             }
 
             myRigidbody.velocity = Vector2.up * _flapStrength;
@@ -98,7 +93,7 @@ public class BirdController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Egg") && birdIsAlive)
         {
-            birdSoundController.getEgg.Play();
+            GameInstance.Instance.getEgg.Play();
         }
     }
 
@@ -106,12 +101,12 @@ public class BirdController : MonoBehaviour
     {
         if (birdIsAlive)
         {
-            birdSoundController.hit1.Play();
-            birdSoundController.hit2.Play();
-            birdSoundController.squawk.Play();
+            GameInstance.Instance.hit1.Play();
+            GameInstance.Instance.hit2.Play();
+            GameInstance.Instance.squawk.Play();
         }
 
-        logic.gameOver();
+        gameManager.gameOver();
         birdIsAlive = false;
     }
 }

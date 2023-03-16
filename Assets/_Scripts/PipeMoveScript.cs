@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PipeMoveScript : MonoBehaviour
 {
-    public LogicManagerScript logic;
+    public GameManager gameManager;
     public float deadZone = -45;
 
 
     void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
         void Update()
     {
-        transform.position += (Vector3.left * logic.moveSpeed) * Time.deltaTime;
+        transform.position += (Vector3.left * gameManager.moveSpeed) * Time.deltaTime;
 
         if (transform.position.x < deadZone)
         {

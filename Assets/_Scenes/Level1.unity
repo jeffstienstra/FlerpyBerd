@@ -515,9 +515,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 152610977}
-        m_TargetAssemblyTypeName: StartScreen, Assembly-CSharp
-        m_MethodName: onMainMenuPress
+      - m_Target: {fileID: 1807086568}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnMainMenuPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1548,9 +1548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5371e4e0860284c65ac863fc72f4bb5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1807086568}
   flapCountText: {fileID: 642978182}
-  logic: {fileID: 0}
-  birdSoundController: {fileID: 0}
   myRigidbody: {fileID: 799920525}
   birdIsAlive: 1
   flapCount: 0
@@ -1696,9 +1695,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3920266395230986231}
-        m_TargetAssemblyTypeName: LogicManagerScript, Assembly-CSharp
-        m_MethodName: restartGame
+      - m_Target: {fileID: 1807086568}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnRetryPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2074,10 +2073,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1205546986}
   - component: {fileID: 1205546988}
+  - component: {fileID: 1205546989}
   - component: {fileID: 1205546987}
   m_Layer: 0
   m_Name: CloudsTop
-  m_TagString: Untagged
+  m_TagString: CloudsTop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2252,7 +2252,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3626,7 +3626,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -14
+      scalar: -4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -6876,6 +6876,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1205546989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205546985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ed0f5a3f3534b799996d3880e46188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1334121157
 GameObject:
   m_ObjectHideFlags: 0
@@ -7061,6 +7073,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1407200095}
   m_CullTransparentMesh: 1
+--- !u!1 &1807086567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807086569}
+  - component: {fileID: 1807086568}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1807086568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807086567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf39725d7d8264a79a40d70693f6050e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudsBottom: {fileID: 1850723724}
+  cloudsTop: {fileID: 1205546988}
+  gameOverScreen: {fileID: 828556608}
+  pauseScreen: {fileID: 1133105103}
+  scoreText: {fileID: 214332794}
+  shieldIsActiveText: {fileID: 28591280}
+  squawkMeterText: {fileID: 271858302}
+  spawnRate: 0
+  heightOffset: 0
+  moveSpeed: 0
+  velocityOverLifetime: 0
+  startLifetime: 0
+  playerScore: 0
+  shieldIsActive: 0
+  squawkMeter: 0
+  isPaused: 0
+--- !u!4 &1807086569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807086567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 659.02466, y: 510.86942, z: -1.8151984}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850723721
 GameObject:
   m_ObjectHideFlags: 0
@@ -7072,9 +7144,10 @@ GameObject:
   - component: {fileID: 1850723722}
   - component: {fileID: 1850723724}
   - component: {fileID: 1850723723}
+  - component: {fileID: 1850723725}
   m_Layer: 0
   m_Name: CloudsBottom
-  m_TagString: Untagged
+  m_TagString: CloudsBottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7249,7 +7322,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -8623,7 +8696,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -14
+      scalar: -4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -11873,6 +11946,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1850723725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850723721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ed0f5a3f3534b799996d3880e46188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112581856
 GameObject:
   m_ObjectHideFlags: 0
@@ -11902,9 +11987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2819fa42bf274b5a9d7e8e31cec75c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logic: {fileID: 0}
   pipe: {fileID: 6985532797727704310, guid: 599c1091aff6444608a7953f0811d8ce, type: 3}
-  egg: {fileID: 4708416605721393414, guid: cdf25858f36474eaabec83d25f04cb51, type: 3}
+  egg: {fileID: 5254101792734954843, guid: 1c10935b0f5ad48d99612f864faf3117, type: 3}
 --- !u!4 &2112581858
 Transform:
   m_ObjectHideFlags: 0
@@ -21686,7 +21770,6 @@ GameObject:
   - component: {fileID: 3920266395230986230}
   - component: {fileID: 3920266395230986231}
   - component: {fileID: 3920266395230985993}
-  - component: {fileID: 3920266395230986232}
   m_Layer: 0
   m_Name: LogicManager
   m_TagString: Logic
@@ -21721,30 +21804,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bde5de6261004f5383e45293d172a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 214332794}
-  squawkMeterText: {fileID: 271858302}
-  shieldIsActiveText: {fileID: 28591280}
-  gameOverScreen: {fileID: 828556608}
-  pauseScreen: {fileID: 1133105103}
-  birdSoundController: {fileID: 0}
-  difficultyManager: {fileID: 0}
-  spawnRate: 2
-  heightOffset: 6
-  moveSpeed: 30
-  playerScore: 0
-  shieldIsActive: 0
-  squawkMeter: 0
-  isPaused: 0
---- !u!114 &3920266395230986232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3920266395230986228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6272afd876835452182a5516461f55b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectedDifficulty: 0

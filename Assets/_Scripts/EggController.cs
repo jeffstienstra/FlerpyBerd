@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EggController : MonoBehaviour
 {
-    public LogicManagerScript logic;
+    private GameInstance _instance = GameInstance.Instance;
+
+    public GameManager gameManager;
+    //public LogicManagerScript logic;
     private BirdController _birdController;
 
     public float deadZone = -45;
@@ -12,13 +15,14 @@ public class EggController : MonoBehaviour
 
     private void Start()
     {
-        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _birdController = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdController>();
 
     }
     void Update()
     {
-        transform.position += (Vector3.left * logic.moveSpeed) * Time.deltaTime;
+        //TODO: Edit pipe and egg prefabs to include reference to GameManager object in the scene.
+        transform.position += (Vector3.left * gameManager.moveSpeed) * Time.deltaTime;
 
         if (transform.position.x < deadZone)
         {
@@ -28,9 +32,9 @@ public class EggController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 3 && !logic.gameOverScreen.activeSelf)
+        if (other.gameObject.layer == 3 && !gameManager.gameOverScreen.activeSelf)
         {
-            logic.addScore(1);
+            gameManager.addScore(1);
         }
 
         if (other.gameObject.CompareTag("Bird") && _birdController.birdIsAlive)
