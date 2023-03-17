@@ -61,7 +61,7 @@ public class BirdController : MonoBehaviour
                 GameInstance.Instance.birdFlap.pitch += .2f;
                 GameInstance.Instance.birdFlap.Play();
 
-                if (flapCount < 3)
+                if (flapCount < 2)
                 {
                     flapCount += 1;
                 }

@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     // Game logic
     public bool isPaused = false;
+    public bool isGameOver = false;
 
     private void Start()
     {
@@ -108,17 +109,20 @@ public class GameManager : MonoBehaviour
     #region Game State Management (pause/retry/gameover)
     public void togglePauseGame()
     {
-        isPaused = !isPaused;
+        if (!isGameOver)
+        {
+            isPaused = !isPaused;
 
-        if (isPaused)
-        {
-            pauseScreen.SetActive(true);
-            Time.timeScale = 0;
-        }
-        else
-        {
-            pauseScreen.SetActive(false);
-            Time.timeScale = 1;
+            if (isPaused)
+            {
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1;
+            }
         }
     }
 
@@ -134,6 +138,7 @@ public class GameManager : MonoBehaviour
 
     public void gameOver()
     {
+        isGameOver = true;
         gameOverScreen.SetActive(true);
     }
     #endregion
