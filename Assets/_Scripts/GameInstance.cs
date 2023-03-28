@@ -66,10 +66,13 @@ public class GameInstance : MonoBehaviour
     public Difficulty selectedDifficulty = Difficulty.Easy;
     public int selectedDifficultyIndex = 0;
 
-    public Dictionary<Difficulty, Dictionary<string, int>> difficultyLevels = new Dictionary<Difficulty, Dictionary<string, int>>()
+    public Dictionary<Difficulty, Dictionary<string, object>> difficultyLevels = new Dictionary<Difficulty, Dictionary<string, object>>()
     {
+        // this dictionary accepts <string, object> so that it can accept both floats and ints.
+        // Be sure to use the SetValueFromDifficulty() function in GameManger to properly convert
+        // the returned dictionary object to either float or int.
         {
-            Difficulty.Easy, new Dictionary<string, int>()
+            Difficulty.Easy, new Dictionary<string, object>()
             {
                 { "spawnRate", 2 },
                 { "heightOffset", 6 },
@@ -81,9 +84,9 @@ public class GameInstance : MonoBehaviour
             }
         },
         {
-            Difficulty.Medium, new Dictionary<string, int>()
+            Difficulty.Medium, new Dictionary<string, object>()
             {
-                { "spawnRate", 1 },
+                { "spawnRate", 1.5 },
                 { "heightOffset", 10 },
                 { "moveSpeed", 20 },
                 { "velocityOverLifetime", -9 },
@@ -93,7 +96,7 @@ public class GameInstance : MonoBehaviour
             }
         },
         {
-            Difficulty.Hard, new Dictionary<string, int>()
+            Difficulty.Hard, new Dictionary<string, object>()
             {
                 { "spawnRate", 1 },
                 { "heightOffset", 14 },

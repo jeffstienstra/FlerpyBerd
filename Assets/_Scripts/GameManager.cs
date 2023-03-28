@@ -78,7 +78,8 @@ public class GameManager : MonoBehaviour
 
     public float SetValueFromDifficulty(string valueName)
     {
-        return _instance.difficultyLevels[_instance.selectedDifficulty][valueName];
+        object value = _instance.difficultyLevels[_instance.selectedDifficulty][valueName];
+        return System.Convert.ToSingle(value);
     }
 
     #endregion

@@ -9,8 +9,8 @@ public class PipeSpawner : MonoBehaviour
     public GameObject pipe;
     public GameObject egg;
     private float timer = 0;
-    int _spawnRate = 0;
-    int _heightOffset = 0;
+    float _spawnRate;
+    float _heightOffset;
 
     private GameInstance _instance = GameInstance.Instance;
     private BirdController _birdController;
@@ -18,8 +18,8 @@ public class PipeSpawner : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        _spawnRate - gameManager.spawnRate;
-        _heightOffset - gameManager.heightOffset;
+        _spawnRate = gameManager.spawnRate;
+        _heightOffset = gameManager.heightOffset;
         // _spawnRate = _instance.difficultyLevels[_instance.selectedDifficulty]["spawnRate"];
         // _heightOffset = _instance.difficultyLevels[_instance.selectedDifficulty]["heightOffset"];
         _birdController = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdController>();
