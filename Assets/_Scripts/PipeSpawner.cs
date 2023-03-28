@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PipeSpawner : MonoBehaviour
 {
-    //public LogicManagerScript logic;
+    public GameManager gameManager;
+
     public GameObject pipe;
     public GameObject egg;
     private float timer = 0;
@@ -14,17 +15,17 @@ public class PipeSpawner : MonoBehaviour
     private GameInstance _instance = GameInstance.Instance;
     private BirdController _birdController;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _spawnRate = _instance.difficultyLevels[_instance.selectedDifficulty]["spawnRate"];
-        _heightOffset = _instance.difficultyLevels[_instance.selectedDifficulty]["heightOffset"];
-        //logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        _spawnRate - gameManager.spawnRate;
+        _heightOffset - gameManager.heightOffset;
+        // _spawnRate = _instance.difficultyLevels[_instance.selectedDifficulty]["spawnRate"];
+        // _heightOffset = _instance.difficultyLevels[_instance.selectedDifficulty]["heightOffset"];
         _birdController = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdController>();
         spawnPipe();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_birdController.birdIsAlive)
