@@ -11,10 +11,8 @@ public class BirdController : MonoBehaviour
     public Rigidbody2D myRigidbody;
     public bool birdIsAlive = true;
     public int flapCount = 0;
-    public int _flapStrength = 27;
     public float highestPitch = 1.1f;
     public float lowestPitch = 0.9f;
-
 
     void Start()
     {
@@ -80,7 +78,8 @@ public class BirdController : MonoBehaviour
                 //gameManager.resetSquawkMeter();
             }
 
-            myRigidbody.velocity = Vector2.up * _flapStrength;
+            myRigidbody.velocity = Vector2.up * gameManager.flapStrength;
+            myRigidbody.gravityScale = gameManager.gravityScale;
         }
     }
 

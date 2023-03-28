@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public float spawnRate;
     public float heightOffset;
     public float moveSpeed;
+    public float gravityScale;
+    public float flapStrength;
 
     // Cloud properties
     public float velocityOverLifetime;
@@ -36,15 +38,28 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         initBird();
+        initPipeSpawner();
+        initPipeMovement();
         initClouds();
         GameInstance.Instance.OnEnterLevel1();
     }
 
+
     #region Initialize GameObjects
     private void initBird()
     {
+        gravityScale = SetValueFromDifficulty("gravityScale");
+        flapStrength = SetValueFromDifficulty("flapStrength");
+    }
+
+    private void initPipeSpawner()
+    {
         spawnRate = SetValueFromDifficulty("spawnRate");
         heightOffset = SetValueFromDifficulty("heightOffset");
+    }
+
+    private void initPipeMovement()
+    {
         moveSpeed = SetValueFromDifficulty("moveSpeed");
     }
 

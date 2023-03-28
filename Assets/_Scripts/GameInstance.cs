@@ -75,7 +75,9 @@ public class GameInstance : MonoBehaviour
                 { "heightOffset", 6 },
                 { "moveSpeed", 10 },
                 { "velocityOverLifetime", -4 },
-                { "startLifetime", 7 }
+                { "startLifetime", 7 },
+                { "gravityScale", 5 },
+                { "flapStrength", 16 },
             }
         },
         {
@@ -85,7 +87,9 @@ public class GameInstance : MonoBehaviour
                 { "heightOffset", 10 },
                 { "moveSpeed", 20 },
                 { "velocityOverLifetime", -9 },
-                { "startLifetime", 5 }
+                { "startLifetime", 5 },
+                { "gravityScale", 9 },
+                { "flapStrength", 24 },
             }
         },
         {
@@ -95,7 +99,9 @@ public class GameInstance : MonoBehaviour
                 { "heightOffset", 14 },
                 { "moveSpeed", 30 },
                 { "velocityOverLifetime", -14 },
-                { "startLifetime", 3 }
+                { "startLifetime", 3 },
+                { "gravityScale", 13 },
+                { "flapStrength", 32 },
             }
         }
     };
@@ -138,12 +144,12 @@ public class GameInstance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
