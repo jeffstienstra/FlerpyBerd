@@ -50,6 +50,11 @@ public class BirdController : MonoBehaviour
             SetGameOver();
         }
 
+        if (!birdIsAlive && Input.GetKeyDown(KeyCode.Return))
+        {
+            gameManager.OnRetryPress();
+        }
+
         // flap
         if (Input.GetKeyDown(KeyCode.Space) == true && birdIsAlive)
         {

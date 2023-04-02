@@ -1804,8 +1804,6 @@ MonoBehaviour:
   myRigidbody: {fileID: 799920525}
   birdIsAlive: 1
   flapCount: 0
-  _flapStrength: 16
-  _gravityScale: 5
   highestPitch: 1.2
   lowestPitch: 0.9
 --- !u!58 &799920529
@@ -12266,6 +12264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2819fa42bf274b5a9d7e8e31cec75c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   pipe: {fileID: 6985532797727704310, guid: 599c1091aff6444608a7953f0811d8ce, type: 3}
   egg: {fileID: 5254101792734954843, guid: 1c10935b0f5ad48d99612f864faf3117, type: 3}
 --- !u!4 &2112581858

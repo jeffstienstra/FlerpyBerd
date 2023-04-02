@@ -20,12 +20,6 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
-    public void onOptionsPress()
-    {
-        Debug.Log("options was pressed");
-
-    }
-
     public void OnDifficultyChange(int index)
     {
         GameInstance.Instance.HandleDifficultyChange(index);
